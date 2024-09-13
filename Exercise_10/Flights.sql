@@ -1,3 +1,5 @@
+--1. Създайте изглед, който извежда име на авиокомпания оператор на полета, номер на полет
+--и брой пътници, потвърдили резервация за този полет. Тествайте изгледa.
 CREATE VIEW flight_info
 AS
 SELECT AIRLINES.NAME, flights.AIRLINE_OPERATOR, flights.FNUMBER, COUNT(BOOKINGS.CUSTOMER_ID) as customers_count
@@ -9,6 +11,8 @@ HAVING BOOKINGS.STATUS = 1
 
 SELECT * FROM flight_info
 
+--2. Създайте изглед за таблицата Agencies, който извежда всички данни за агенциите от град
+--София. Дефинирайте изгледa с CHECK OPTION. Тествайте изгледa.
 CREATE VIEW agency_cities
 AS
 SELECT * FROM AGENCIES
@@ -17,6 +21,9 @@ WITH CHECK OPTION
 
 SELECT * FROM agency_cities
 
+--3. Създайте изглед за таблицата Agencies, който извежда всички данни за агенциите, такива
+--че телефонните номера на тези агенции да имат стойност NULL. Дефинирайте изгледa с
+CHECK OPTION. Тествайте изгледa
 CREATE VIEW agencies_phone
 AS
 SELECT * FROM AGENCIES
@@ -25,6 +32,7 @@ WITH CHECK OPTION
 
 SELECT * FROM agencies_phone
 
+--4. Опитайте се да вмъкнете следните редове през изгледите от задачи 2 и 3
 INSERT INTO agency_cities
 VALUES('T1 Tour', 'Bulgaria', 'Sofia','+359')
 INSERT INTO agencies_phone
